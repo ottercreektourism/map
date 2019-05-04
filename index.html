@@ -160,6 +160,7 @@
                                     </g>
                                 </svg>
                             </div>
+                            
                             <div class="bubble-2 is-revealing">
                                 <svg width="179" height="126" viewBox="0 0 179 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <defs>
@@ -176,6 +177,7 @@
                                 </svg>
 
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -298,7 +300,7 @@
 
     <script src="https://js.arcgis.com/4.11/"></script>
     <script>
-      require(["esri/views/MapView", "esri/WebMap"], function(MapView, WebMap) {
+      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Fullscreen"], function(MapView, WebMap, FullScreen) {
         /************************************************************
          * Creates a new WebMap instance. A WebMap must reference
          * a PortalItem ID that represents a WebMap saved to
@@ -321,6 +323,15 @@
           map: webmap,
           container: "viewDiv"
         });
+
+      // create your map and view
+
+      var toggle = new FullScreen({
+        view: view,
+        hideIfFullScreenDisabled: false // default is true
+      });
+      view.ui.add(toggle, "bottom-left");
+
       }); 
     </script>
 
