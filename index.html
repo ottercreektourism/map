@@ -317,7 +317,6 @@
             id: "80a581520b594c2298429e9dffa7ab6e"
           }
         });
-
         /************************************************************
          * Set the WebMap instance to the map property in a MapView.
          ************************************************************/
@@ -325,20 +324,16 @@
           map: webmap,
           container: "viewDiv"
         });
-
         var homeBtn = new Home({
             view: view
         });
         homeBtn.startup();
       view.ui.add(homeBtn, "top-right");
-
-
       var toggle3 = new FullScreen({
         view: view,
         hideIfFullScreenDisabled: false
       });
       view.ui.add(toggle3, "bottom-left");
-
       }); 
     </script>     
 
