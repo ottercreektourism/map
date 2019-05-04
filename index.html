@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="dist/css/style.css">    
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>    
 
-	<!-- MAP STUFF -->
-	<link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
+  <!-- MAP STUFF -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">
@@ -98,7 +98,7 @@
                             </div>
                             <div class="hero-browser-inner is-revealing">
 
-                            	<div id="viewDiv" style="width: 99.4%; height: 94.5%; max-width: 794px; max-height: 420px; position: absolute; top: 5.5%; left: 0.3%;"></div>
+                              <div id="viewDiv" style="width: 99.4%; height: 94.5%; max-width: 794px; max-height: 420px; position: absolute; top: 5.5%; left: 0.3%;"></div>
 
                                 <svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <defs>
@@ -249,7 +249,7 @@
                                 </div>                                                                
                             </div>
 
-			  			
+              
                         </div>
                     </div>
                 </div>
@@ -298,9 +298,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>    
 
+    <script src="dist/js/main.min.js"></script>
+
     <script src="https://js.arcgis.com/4.11/"></script>
     <script>
-      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Fullscreen"], function(MapView, WebMap, FullScreen) {
+      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Home", "esri/widgets/Fullscreen"], function(MapView, WebMap, Home, FullScreen) {
         /************************************************************
          * Creates a new WebMap instance. A WebMap must reference
          * a PortalItem ID that represents a WebMap saved to
@@ -324,18 +326,21 @@
           container: "viewDiv"
         });
 
-      // create your map and view
+        var homeBtn = new Home({
+            view: view
+        });
+        homeBtn.startup();
+      view.ui.add(homeBtn, "top-right");
 
-      var toggle = new FullScreen({
+
+      var toggle3 = new FullScreen({
         view: view,
-        hideIfFullScreenDisabled: false // default is true
+        hideIfFullScreenDisabled: false
       });
-      view.ui.add(toggle, "bottom-left");
+      view.ui.add(toggle3, "bottom-left");
 
       }); 
-    </script>
-
-    <script src="dist/js/main.min.js"></script>    
+    </script>     
 
 </body>
 </html>
