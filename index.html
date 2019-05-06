@@ -121,11 +121,7 @@
                                     </div>
                                     <div class="hero-browser-inner is-revealing">
 
-                                      <div id="viewDiv"></div>
-
-                                      <div id="legend">
-                                        <img src="images/legend.jpg">
-                                      </div>                                      
+                                      <div id="viewDiv"></div>                                     
 
                                         <svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             <defs>
@@ -178,7 +174,7 @@
             </section>
 
             <section class="newsletter section">
-                <div class="container-sm">
+                <div class="container">
                     <div class="newsletter-inner section-inner" style="padding-bottom: 80px;">
                         <div class="newsletter-header text-center is-revealing">
 
@@ -421,7 +417,7 @@ http://www.flickr.com/photos/baustin/7436918038/
 
     <script src="https://js.arcgis.com/4.11/"></script>
     <script>
-      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Home", "esri/widgets/Fullscreen"], function(MapView, WebMap, Home, FullScreen) {
+      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Home", "esri/widgets/Fullscreen", "esri/widgets/Legend", "esri/widgets/Expand"], function(MapView, WebMap, Home, FullScreen, Legend, Expand) {
         /************************************************************
          * Creates a new WebMap instance. A WebMap must reference
          * a PortalItem ID that represents a WebMap saved to
@@ -453,6 +449,20 @@ http://www.flickr.com/photos/baustin/7436918038/
         hideIfFullScreenDisabled: false
       });
       view.ui.add(toggle3, "bottom-left");
+
+        const legend = new Expand({
+          content: new Legend({
+            view: view,
+            style: "classic", // other styles include 'classic'
+            layout: "auto",
+            title: "Legend"
+
+          }),
+          view: view,
+          expanded: false
+        });
+        view.ui.add(legend, "bottom-right");
+
       }); 
     </script>     
 
